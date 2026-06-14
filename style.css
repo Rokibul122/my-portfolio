@@ -448,3 +448,44 @@ transition:.4s;
 transform:scale(1.05);
 box-shadow:0 0 50px rgba(56,189,248,.9);
 }
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:linear-gradient(135deg,#0a0a0a,#1a1a1a);
+  color:white;
+  text-align:center;
+}
+
+img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  border:3px solid #00ffcc;
+  box-shadow:0 0 20px #00ffcc;
+}
+
+.projects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  padding:20px;
+}
+
+.card{
+  background:rgba(255,255,255,0.05);
+  padding:20px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 15px #00ffcc;
+}
+
+h2{
+  color:#00ffcc;
+}
+</style>
