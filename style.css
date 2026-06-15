@@ -489,3 +489,49 @@ h2{
   color:#00ffcc;
 }
 </style>
+#projects {
+  padding: 50px;
+  background: #0f172a;
+  color: white;
+  text-align: center;
+}
+
+.project-card {
+  background: #1e293b;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  width: 250px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background: #111827;
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    width: 90%;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+}
