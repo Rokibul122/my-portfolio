@@ -1,167 +1,192 @@
+// ==========================
 // Loader
+// ==========================
 
 window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-  loader.style.display = "none";
+const loader = document.getElementById("loader");
+
+if (loader) {
+setTimeout(() => {
+loader.style.display = "none";
+}, 800);
+}
 });
 
+// ==========================
 // Typing Animation
+// ==========================
 
 const words = [
-  "Electronics Learner",
-  "Technology Enthusiast",
-  "GitHub Explorer",
-  "Future Technician"
+"Electronics Learner",
+"Technology Enthusiast",
+"GitHub Explorer",
+"Future Technician"
 ];
 
 let wordIndex = 0;
 let charIndex = 0;
-let isDeleting = false;
+let deleting = false;
 
 const typingElement = document.querySelector(".typing");
 
 function typeEffect() {
 
-  const currentWord = words[wordIndex];
+if (!typingElement) return;
 
-  if (!isDeleting) {
-    typingElement.textContent =
-      currentWord.substring(0, charIndex + 1);
-    charIndex++;
+const currentWord = words[wordIndex];
 
-    if (charIndex === currentWord.length) {
-      isDeleting = true;
-      setTimeout(typeEffect, 1500);
-      return;
-    }
+if (!deleting) {
 
-  } else {
+typingElement.textContent =
+  currentWord.substring(0, charIndex + 1);
 
-    typingElement.textContent =
-      currentWord.substring(0, charIndex - 1);
+charIndex++;
 
-    charIndex--;
+if (charIndex === currentWord.length) {
 
-    if (charIndex === 0) {
-      isDeleting = false;
-      wordIndex++;
+  deleting = true;
 
-      if (wordIndex === words.length) {
-        wordIndex = 0;
-      }
-    }
+  setTimeout(typeEffect, 1500);
+
+  return;
+}
+
+} else {
+
+typingElement.textContent =
+  currentWord.substring(0, charIndex - 1);
+
+charIndex--;
+
+if (charIndex === 0) {
+
+  deleting = false;
+
+  wordIndex++;
+
+  if (wordIndex >= words.length) {
+    wordIndex = 0;
   }
 
-  setTimeout(typeEffect, isDeleting ? 60 : 120);
+}
+
+}
+
+setTimeout(typeEffect, deleting ? 60 : 120);
+
 }
 
 typeEffect();
 
-
+// ==========================
 // Counter Animation
+// ==========================
 
 const counters =
 document.querySelectorAll(".counter");
 
 counters.forEach(counter => {
 
-  const updateCounter = () => {
+const updateCounter = () => {
 
-    const target =
-      +counter.getAttribute("data-target");
+const target =
+  +counter.getAttribute("data-target");
 
-    const count =
-      +counter.innerText;
+const count =
+  +counter.innerText;
 
-    const increment =
-      target / 100;
+const increment =
+  target / 100;
 
-    if (count < target) {
+if (count < target) {
 
-      counter.innerText =
-        Math.ceil(count + increment);
+  counter.innerText =
+    Math.ceil(count + increment);
 
-      setTimeout(updateCounter, 20);
+  setTimeout(updateCounter, 20);
 
-    } else {
+} else {
 
-      counter.innerText = target;
+  counter.innerText = target;
 
-    }
-  };
+}
 
-  updateCounter();
+};
+
+updateCounter();
+
 });
 
-
+// ==========================
 // Scroll Reveal
+// ==========================
 
 const revealElements =
 document.querySelectorAll(
 ".section,.project-card,.service-card,.timeline-item"
 );
 
-function reveal() {
-
-  revealElements.forEach(el => {
-
-    const windowHeight =
-      window.innerHeight;
-
-    const revealTop =
-      el.getBoundingClientRect().top;
-
-    if (revealTop < windowHeight - 100) {
-
-      el.style.opacity = "1";
-      el.style.transform =
-        "translateY(0px)";
-
-    }
-  });
-}
-
 revealElements.forEach(el => {
 
-  el.style.opacity = "0";
-  el.style.transform =
-    "translateY(40px)";
-  el.style.transition =
-    "all .8s ease";
+el.style.opacity = "0";
+el.style.transform =
+"translateY(40px)";
+el.style.transition =
+"all .8s ease";
 
 });
 
-window.addEventListener(
-  "scroll",
-  reveal
-);
-const words = ["Developer", "Designer", "Freelancer"];
-let i = 0;
-let j = 0;
-let current = "";
-let isDeleting = false;
+function reveal() {
 
-function type() {
-  current = words[i];
+revealElements.forEach(el => {
 
-  if (isDeleting) {
-    document.getElementById("typing").textContent = current.substring(0, j--);
-  } else {
-    document.getElementById("typing").textContent = current.substring(0, j++);
-  }
+const windowHeight =
+  window.innerHeight;
 
-  if (!isDeleting && j === current.length) {
-    isDeleting = true;
-    setTimeout(type, 1000);
-    return;
-  }
+const revealTop =
+  el.getBoundingClientRect().top;
 
-  if (isDeleting && j === 0) {
-    isDeleting = false;
-    i = (i + 1) % words.length;
-  }
+if (revealTop < windowHeight - 100) {
 
-  setTimeout(type, isDeleting ? 80 : 120);
+  el.style.opacity = "1";
+  el.style.transform =
+    "translateY(0px)";
+
 }
 
-type();
+});
+
+}
+
+window.addEventListener(
+"scroll",
+reveal
+);
+
+reveal();
+
+// ==========================
+// Mobile Menu
+// ==========================
+
+const menuBtn =
+document.querySelector(".menu-btn");
+
+const navLinks =
+document.querySelector(".nav-links");
+
+if (menuBtn && navLinks) {
+
+menuBtn.addEventListener(
+"click",
+() => {
+
+  navLinks.classList.toggle(
+    "active"
+  );
+
+}
+
+);
+
+}
