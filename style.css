@@ -1,38 +1,40 @@
-/* ==========================================
+/* ==================================================
    ROKIBUL ISLAMIC HUB
-   Premium Islamic Futuristic UI
-========================================== */
+   Premium Islamic Operating System UI
+================================================== */
 
 :root{
 
 --primary:#0F9D58;
---primary-light:#19c36c;
+--primary-light:#16c86f;
 
 --gold:#FFD700;
---gold-soft:#ffe866;
+--gold-soft:#ffe98a;
 
 --bg:#050505;
---bg2:#0b0b0b;
+--bg2:#0a0a0a;
+--bg3:#101010;
 
---glass:rgba(255,255,255,.08);
+--glass:rgba(255,255,255,.06);
 --glass-border:rgba(255,255,255,.10);
 
 --text:#ffffff;
---muted:#bfbfbf;
+--muted:#bdbdbd;
 
 --shadow-green:
 0 0 20px rgba(15,157,88,.35),
-0 0 40px rgba(15,157,88,.15);
+0 0 50px rgba(15,157,88,.15);
 
 --shadow-gold:
 0 0 20px rgba(255,215,0,.25);
 
 --radius:24px;
+
 }
 
-/* ==========================================
-   RESET
-========================================== */
+/* ======================================
+RESET
+====================================== */
 
 *{
 margin:0;
@@ -45,6 +47,7 @@ scroll-behavior:smooth;
 }
 
 body{
+
 font-family:
 Inter,
 Segoe UI,
@@ -52,118 +55,161 @@ sans-serif;
 
 background:var(--bg);
 color:var(--text);
+
 overflow-x:hidden;
-line-height:1.7;
+position:relative;
 }
 
-/* ==========================================
-   SCROLLBAR
-========================================== */
+/* ======================================
+LOADER
+====================================== */
 
-::-webkit-scrollbar{
-width:10px;
-}
+#loader{
 
-::-webkit-scrollbar-track{
-background:#080808;
-}
-
-::-webkit-scrollbar-thumb{
-background:var(--primary);
-border-radius:100px;
-}
-
-/* ==========================================
-   BACKGROUND EFFECTS
-========================================== */
-
-body::before{
-content:"";
 position:fixed;
 inset:0;
 
-background:
-radial-gradient(circle at 10% 20%,
-rgba(15,157,88,.18),
-transparent 35%),
+background:#050505;
 
-radial-gradient(circle at 90% 30%,
-rgba(255,215,0,.08),
-transparent 35%),
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 
-radial-gradient(circle at 50% 90%,
-rgba(15,157,88,.10),
-transparent 40%);
-
-z-index:-2;
-animation:bgFloat 12s infinite alternate;
+z-index:99999;
 }
 
-@keyframes bgFloat{
+.loader-ring{
+
+width:90px;
+height:90px;
+
+border:4px solid rgba(255,255,255,.08);
+
+border-top:4px solid var(--gold);
+
+border-radius:50%;
+
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+/* ======================================
+SVG BACKGROUND
+====================================== */
+
+#islamicPattern{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+opacity:.3;
+
+z-index:-2;
+}
+
+/* ======================================
+PARTICLE CANVAS
+====================================== */
+
+#particleCanvas{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+z-index:-1;
+
+pointer-events:none;
+}
+
+/* ======================================
+BODY GLOW
+====================================== */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:
+
+radial-gradient(
+circle at 20% 20%,
+rgba(15,157,88,.12),
+transparent 35%
+),
+
+radial-gradient(
+circle at 80% 30%,
+rgba(255,215,0,.08),
+transparent 35%
+),
+
+radial-gradient(
+circle at 50% 90%,
+rgba(15,157,88,.10),
+transparent 40%
+);
+
+animation:bgMove 15s infinite alternate;
+
+z-index:-3;
+}
+
+@keyframes bgMove{
 
 from{
 transform:scale(1);
 }
 
 to{
-transform:scale(1.15);
+transform:scale(1.2);
 }
 
 }
 
-/* ==========================================
-   GRID PATTERN
-========================================== */
-
-.pattern-grid{
-
-position:fixed;
-inset:0;
-
-background-image:
-linear-gradient(
-rgba(255,255,255,.03) 1px,
-transparent 1px
-),
-
-linear-gradient(
-90deg,
-rgba(255,255,255,.03) 1px,
-transparent 1px
-);
-
-background-size:50px 50px;
-
-z-index:-1;
-}
-
-/* ==========================================
-   CONTAINER
-========================================== */
-
-.container{
-width:min(1200px,90%);
-margin:auto;
-}
-
-/* ==========================================
-   NAVBAR
-========================================== */
+/* ======================================
+NAVBAR
+====================================== */
 
 .navbar{
 
-position:sticky;
+position:fixed;
 top:0;
+
+width:100%;
+
+padding:18px 6%;
 
 display:flex;
 justify-content:space-between;
 align-items:center;
 
-padding:18px 5%;
-
 background:rgba(0,0,0,.45);
 
-backdrop-filter:blur(20px);
+backdrop-filter:blur(25px);
 
 border-bottom:
 1px solid rgba(255,255,255,.08);
@@ -173,7 +219,7 @@ z-index:1000;
 
 .logo{
 
-font-size:1.3rem;
+font-size:1.2rem;
 font-weight:800;
 
 color:var(--gold);
@@ -181,79 +227,126 @@ color:var(--gold);
 letter-spacing:1px;
 }
 
-.nav-links{
+nav{
 
 display:flex;
 gap:25px;
-
-list-style:none;
 }
 
-.nav-links a{
+nav a{
 
 text-decoration:none;
+
 color:white;
+
+font-weight:500;
 
 transition:.3s;
 }
 
-.nav-links a:hover{
+nav a:hover{
+
 color:var(--gold);
+
+text-shadow:
+0 0 10px var(--gold);
 }
 
-/* ==========================================
-   HERO
-========================================== */
+/* ======================================
+HERO SECTION
+====================================== */
 
 .hero{
 
 min-height:100vh;
 
 display:flex;
-align-items:center;
 justify-content:center;
+align-items:center;
 
 text-align:center;
 
-padding:100px 20px;
+padding:120px 20px 200px;
+
+position:relative;
 }
 
 .hero-content{
-max-width:950px;
+
+max-width:900px;
+z-index:5;
 }
+
+/* ======================================
+ARABIC DECORATION
+====================================== */
+
+.arabic-decoration{
+
+font-size:5rem;
+
+color:rgba(255,215,0,.12);
+
+margin-bottom:20px;
+
+animation:float 5s ease-in-out infinite;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-15px);
+}
+
+100%{
+transform:translateY(0);
+}
+
+}
+
+/* ======================================
+BADGE
+====================================== */
 
 .badge{
 
-display:inline-flex;
-align-items:center;
+display:inline-block;
 
-padding:10px 20px;
-
-border-radius:999px;
+padding:12px 22px;
 
 background:var(--glass);
 
 border:
 1px solid var(--glass-border);
 
-margin-bottom:25px;
-
 backdrop-filter:blur(20px);
+
+border-radius:999px;
+
+margin-bottom:25px;
 }
 
-.hero-title{
+/* ======================================
+TITLE
+====================================== */
+
+.hero h1{
 
 font-size:
 clamp(3rem,8vw,7rem);
 
-font-weight:900;
-
 line-height:1.05;
+
+font-weight:900;
 
 margin-bottom:25px;
 }
 
-.gradient-text{
+.hero h1 span{
 
 background:
 linear-gradient(
@@ -266,31 +359,37 @@ var(--gold)
 -webkit-text-fill-color:transparent;
 }
 
-.hero-description{
+.hero p{
+
+max-width:700px;
+
+margin:auto;
 
 font-size:1.15rem;
 
 color:var(--muted);
 
-max-width:700px;
+line-height:1.8;
 
-margin:auto auto 40px;
+margin-bottom:40px;
 }
 
-/* ==========================================
-   BUTTONS
-========================================== */
+/* ======================================
+BUTTONS
+====================================== */
 
-.btn-group{
+.hero-buttons{
 
 display:flex;
+
 justify-content:center;
+
 gap:15px;
 
 flex-wrap:wrap;
 }
 
-.btn{
+.hero-buttons button{
 
 padding:15px 28px;
 
@@ -300,91 +399,104 @@ border-radius:16px;
 
 cursor:pointer;
 
-font-weight:700;
+font-size:1rem;
 
-text-decoration:none;
+font-weight:700;
 
 transition:.35s;
 }
 
-.btn-primary{
+.hero-buttons button:first-child{
 
 background:var(--primary);
+
 color:white;
 
 box-shadow:var(--shadow-green);
 }
 
-.btn-primary:hover{
+.hero-buttons button:first-child:hover{
 
 transform:translateY(-5px);
 
 box-shadow:
-0 0 30px rgba(15,157,88,.55);
+0 0 35px rgba(15,157,88,.55);
 }
 
-.btn-secondary{
+.hero-buttons button:not(:first-child){
 
 background:var(--glass);
 
-color:white;
-
 border:
-1px solid var(--glass-border);
+1px solid rgba(255,255,255,.08);
 
-backdrop-filter:blur(20px);
+color:white;
 }
 
-.btn-secondary:hover{
+.hero-buttons button:not(:first-child):hover{
 
 border-color:var(--gold);
 
 transform:translateY(-4px);
 }
 
-/* ==========================================
-   SECTION TITLE
-========================================== */
+/* ======================================
+MOSQUE SKYLINE
+====================================== */
 
-.section{
+.mosque-skyline{
 
-padding:120px 0;
+position:absolute;
+
+bottom:0;
+left:0;
+
+width:100%;
 }
 
-.section-title{
+.mosque-skyline svg{
 
-font-size:3rem;
-
-text-align:center;
-
-margin-bottom:15px;
+width:100%;
+height:auto;
 }
 
-.section-subtitle{
+.mosque-skyline path{
 
-text-align:center;
+fill:#0d0d0d;
 
-color:var(--muted);
+stroke:rgba(255,215,0,.25);
 
-margin-bottom:60px;
+stroke-width:2;
 }
 
-/* ==========================================
-   GLASS CARD
-========================================== */
+/* ======================================
+FEATURES
+====================================== */
+
+.features{
+
+padding:120px 8%;
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+
+gap:25px;
+}
 
 .card{
 
 background:var(--glass);
 
-border:
-1px solid var(--glass-border);
-
 backdrop-filter:blur(20px);
 
-border-radius:var(--radius);
+border:
+1px solid rgba(255,255,255,.08);
 
-padding:30px;
+padding:35px;
+
+border-radius:var(--radius);
 
 transition:.4s;
 }
@@ -398,118 +510,78 @@ box-shadow:
 0 0 40px rgba(15,157,88,.18);
 }
 
-/* ==========================================
-   FEATURE GRID
-========================================== */
-
-.features-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(280px,1fr));
-
-gap:25px;
-}
-
-.feature-icon{
-
-font-size:2rem;
+.card h3{
 
 margin-bottom:15px;
 
 color:var(--gold);
 }
 
-.feature-title{
-
-font-size:1.3rem;
-
-margin-bottom:10px;
-
-color:var(--gold);
-}
-
-.feature-text{
+.card p{
 
 color:var(--muted);
 }
 
-/* ==========================================
-   DASHBOARD CARDS
-========================================== */
+/* ======================================
+DASHBOARD PREVIEW
+====================================== */
+
+.dashboard-preview{
+
+padding:120px 8%;
+}
+
+.dashboard-preview h2{
+
+text-align:center;
+
+font-size:3rem;
+
+margin-bottom:50px;
+}
 
 .dashboard-grid{
 
 display:grid;
 
 grid-template-columns:
-repeat(auto-fit,minmax(250px,1fr));
+repeat(auto-fit,minmax(240px,1fr));
 
 gap:25px;
 }
 
-.stat-card{
-
-padding:35px;
+.dashboard-card{
 
 background:var(--glass);
-
-border-radius:20px;
-
-border:
-1px solid var(--glass-border);
-
-text-align:center;
-}
-
-.stat-number{
-
-font-size:2.5rem;
-
-font-weight:900;
-
-color:var(--gold);
-}
-
-.stat-label{
-
-color:var(--muted);
-}
-
-/* ==========================================
-   FORMS
-========================================== */
-
-.input{
-
-width:100%;
-
-padding:15px;
-
-background:
-rgba(255,255,255,.05);
 
 border:
 1px solid rgba(255,255,255,.08);
 
-border-radius:14px;
+backdrop-filter:blur(20px);
 
-color:white;
+padding:40px;
 
-outline:none;
+border-radius:20px;
+
+text-align:center;
 }
 
-.input:focus{
+.dashboard-card strong{
 
-border-color:var(--primary);
+display:block;
+
+font-size:2.5rem;
+
+margin-top:10px;
+
+color:var(--gold);
 }
 
-/* ==========================================
-   FOOTER
-========================================== */
+/* ======================================
+FOOTER
+====================================== */
 
-.footer{
+footer{
 
 padding:60px 20px;
 
@@ -517,90 +589,48 @@ text-align:center;
 
 border-top:
 1px solid rgba(255,255,255,.08);
+}
+
+footer h3{
+
+color:var(--gold);
+
+margin-bottom:10px;
+}
+
+footer p{
 
 color:var(--muted);
 }
 
-/* ==========================================
-   FLOAT ANIMATION
-========================================== */
-
-.float{
-
-animation:
-float 5s ease-in-out infinite;
-}
-
-@keyframes float{
-
-0%{
-transform:translateY(0);
-}
-
-50%{
-transform:translateY(-12px);
-}
-
-100%{
-transform:translateY(0);
-}
-
-}
-
-/* ==========================================
-   FADE ANIMATION
-========================================== */
-
-.fade-up{
-
-animation:
-fadeUp .9s ease;
-}
-
-@keyframes fadeUp{
-
-from{
-
-opacity:0;
-transform:
-translateY(40px);
-
-}
-
-to{
-
-opacity:1;
-transform:
-translateY(0);
-
-}
-
-}
-
-/* ==========================================
-   RESPONSIVE
-========================================== */
+/* ======================================
+RESPONSIVE
+====================================== */
 
 @media(max-width:768px){
 
-.nav-links{
+nav{
 display:none;
 }
 
-.hero-title{
+.hero h1{
 font-size:3rem;
 }
 
-.section-title{
-font-size:2rem;
+.arabic-decoration{
+font-size:3rem;
 }
 
-.btn-group{
+.hero-buttons{
 flex-direction:column;
 }
 
-.btn{
+.hero-buttons button{
 width:100%;
+}
+
+.dashboard-preview h2{
+font-size:2rem;
 }
 
 }
