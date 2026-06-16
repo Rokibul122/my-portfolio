@@ -1,333 +1,193 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>ROKIBUL ISLAMIC HUB</title>
-
-<meta name="description"
-content="Premium Islamic Digital Platform">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<style>
-:root{
---primary:#0F9D58;
---gold:#FFD700;
---bg:#050505;
---glass:rgba(255,255,255,.08);
---text:#ffffff;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:system-ui,sans-serif;
-}
-<svg
-id="islamicPattern"
-style="
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;
-pointer-events:none;
-">
-</svg>
-body{
-background:var(--bg);
-color:var(--text);
-overflow-x:hidden;
-}
-
-/* Animated Background */
-
-.bg{
-position:fixed;
-inset:0;
-z-index:-2;
-background:
-radial-gradient(circle at 20% 20%,#0F9D5820,transparent 40%),
-radial-gradient(circle at 80% 30%,#FFD70015,transparent 35%),
-radial-gradient(circle at 50% 80%,#0F9D5815,transparent 40%);
-animation:bgMove 12s infinite alternate;
-}
-
-@keyframes bgMove{
-from{transform:scale(1);}
-to{transform:scale(1.2);}
-}
-
-/* Grid Pattern */
-
-.pattern{
-position:fixed;
-inset:0;
-opacity:.07;
-background-image:
-linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),
-linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px);
-background-size:50px 50px;
-z-index:-1;
-}
-
-/* Navbar */
-
-nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 5%;
-backdrop-filter:blur(20px);
-background:var(--glass);
-border-bottom:1px solid rgba(255,255,255,.08);
-position:sticky;
-top:0;
-z-index:100;
-}
-
-.logo{
-font-size:1.3rem;
-font-weight:700;
-color:var(--gold);
-}
-
-nav ul{
-display:flex;
-gap:25px;
-list-style:none;
-}
-
-nav a{
-text-decoration:none;
-color:white;
-}
-
-/* Hero */
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:40px;
-}
-
-.hero-content{
-max-width:900px;
-}
-
-.badge{
-display:inline-block;
-padding:10px 20px;
-border:1px solid rgba(255,255,255,.1);
-background:var(--glass);
-border-radius:50px;
-margin-bottom:25px;
-}
-
-h1{
-font-size:clamp(2.5rem,8vw,6rem);
-line-height:1.1;
-margin-bottom:20px;
-}
-
-.gradient{
-background:linear-gradient(
-90deg,
-#0F9D58,
-#FFD700
-);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.hero p{
-font-size:1.1rem;
-opacity:.85;
-margin-bottom:35px;
-line-height:1.8;
-}
-
-.buttons{
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:15px 28px;
-border-radius:14px;
-text-decoration:none;
-font-weight:600;
-transition:.3s;
-}
-
-.btn-primary{
-background:var(--primary);
-color:white;
-}
-
-.btn-primary:hover{
-transform:translateY(-4px);
-box-shadow:0 0 30px #0F9D58;
-}
-
-.btn-secondary{
-background:var(--glass);
-border:1px solid rgba(255,255,255,.1);
-color:white;
-}
-
-.btn-secondary:hover{
-border-color:var(--gold);
-}
-
-/* Feature Cards */
-
-.features{
-padding:100px 5%;
-display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
-}
-
-.card{
-background:var(--glass);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.08);
-padding:30px;
-border-radius:24px;
-transition:.4s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 30px #0F9D5840;
-}
-
-.card h3{
-margin-bottom:12px;
-color:var(--gold);
-}
-
-footer{
-padding:40px;
-text-align:center;
-opacity:.7;
-}
-</style>
-</head>
-
 <body>
 
-<div class="bg"></div>
-<div class="pattern"></div>
+  <!-- Loading Screen -->
+  <div id="loader">
+    <div class="loader-ring"></div>
+    <h2>ROKIBUL ISLAMIC HUB</h2>
+  </div>
 
-<nav>
-<div class="logo">
-☪ ROKIBUL ISLAMIC HUB
-</div>
+  <!-- SVG Islamic Pattern Background -->
+  <svg id="islamicPattern"></svg>
 
-<ul>
-<li><a href="#">Home</a></li>
-<li><a href="#">Quran</a></li>
-<li><a href="#">Hadith</a></li>
-<li><a href="#">Prayer</a></li>
-<li><a href="#">AI Assistant</a></li>
-</ul>
-</nav>
+  <!-- Particle Canvas -->
+  <canvas id="particleCanvas"></canvas>
 
-<section class="hero">
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      ☪ ROKIBUL ISLAMIC HUB
+    </div>
 
-<div class="hero-content">
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Quran</a>
+      <a href="#">Hadith</a>
+      <a href="#">Prayer</a>
+      <a href="#">Assistant</a>
+      <a href="#">Dashboard</a>
+    </nav>
+  </header>
 
-<div class="badge">
-Premium Islamic Digital Platform
-</div>
+  <!-- Hero Section -->
+  <section class="hero">
 
-<h1>
-Welcome To
-<br>
-<span class="gradient">
-ROKIBUL ISLAMIC HUB
-</span>
-</h1>
+    <!-- Arabic Decoration -->
+    <div class="arabic-decoration">
+      ﷽
+    </div>
 
-<p>
-A futuristic Islamic ecosystem featuring
-Quran Center, Hadith Library,
-Prayer Tracking, Islamic Learning,
-Zakat Tools and AI Islamic Assistant.
-</p>
+    <div class="hero-content">
 
-<div class="buttons">
+      <div class="badge">
+        Premium Islamic Digital Ecosystem
+      </div>
 
-<a href="#" class="btn btn-primary">
-Explore Quran
-</a>
+      <h1>
+        Welcome To
+        <span>
+          ROKIBUL ISLAMIC HUB
+        </span>
+      </h1>
 
-<a href="#" class="btn btn-secondary">
-Prayer Times
-</a>
+      <p>
+        Quran, Hadith, Prayer Tools,
+        Islamic Learning and AI Assistant
+        in one futuristic platform.
+      </p>
 
-<a href="#" class="btn btn-secondary">
-AI Assistant
-</a>
+      <div class="hero-buttons">
 
-</div>
+        <button>
+          Explore Quran
+        </button>
 
-</div>
+        <button>
+          Prayer Times
+        </button>
 
-</section>
+        <button>
+          AI Assistant
+        </button>
 
-<section class="features">
+      </div>
 
-<div class="card">
-<h3>Prayer Center</h3>
-<p>
-Prayer times, Qibla direction,
-tracker and streak system.
-</p>
-</div>
+    </div>
 
-<div class="card">
-<h3>Quran Center</h3>
-<p>
-Arabic Quran, Bengali translation,
-search and bookmarks.
-</p>
-</div>
+    <!-- SVG Mosque Skyline -->
+    <div class="mosque-skyline">
 
-<div class="card">
-<h3>Hadith Library</h3>
-<p>
-Bukhari, Muslim and other
-major collections.
-</p>
-</div>
+      <svg viewBox="0 0 1200 250">
 
-<div class="card">
-<h3>Islamic AI</h3>
-<p>
-Reference based answers with
-source citations.
-</p>
-</div>
+        <path
+        d="
+        M0 250
+        L0 180
 
-</section>
+        L100 180
+        L120 90
+        L140 180
 
-<footer>
-© 2026 ROKIBUL ISLAMIC HUB
-</footer>
+        L250 180
+        L280 40
+        L310 180
+
+        L500 180
+        L530 60
+        L560 180
+
+        L750 180
+        L790 20
+        L830 180
+
+        L1000 180
+        L1030 70
+        L1060 180
+
+        L1200 180
+        L1200 250
+        Z
+        " />
+
+      </svg>
+
+    </div>
+
+  </section>
+
+  <!-- Feature Cards -->
+  <section class="features">
+
+    <div class="card">
+      <h3>Quran Center</h3>
+      <p>
+        Read, Search and Bookmark Quran.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Hadith Library</h3>
+      <p>
+        Authentic Collections.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Prayer Center</h3>
+      <p>
+        Prayer Times and Tracker.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>AI Assistant</h3>
+      <p>
+        Quran & Hadith Based Answers.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- Quran Dashboard Preview -->
+  <section class="dashboard-preview">
+
+    <h2>Quran Dashboard</h2>
+
+    <div class="dashboard-grid">
+
+      <div class="dashboard-card">
+        Surahs
+        <strong>114</strong>
+      </div>
+
+      <div class="dashboard-card">
+        Bookmarks
+        <strong>0</strong>
+      </div>
+
+      <div class="dashboard-card">
+        Reading Progress
+        <strong>0%</strong>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer>
+
+    <h3>
+      ROKIBUL ISLAMIC HUB
+    </h3>
+
+    <p>
+      Islamic Digital Operating System
+    </p>
+
+  </footer>
+
+  <script src="js/patterns.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/hero.js"></script>
 
 </body>
-</html>
