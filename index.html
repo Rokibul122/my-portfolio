@@ -4,646 +4,319 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ROKIBUL PRIME LIVING | The Future Of Luxury Living</title>
+<title>ROKIBUL ISLAMIC HUB</title>
 
 <meta name="description"
-content="Luxury Real Estate Platform by ROKIBUL PRIME LIVING. Discover premium residences, smart homes, and future-ready investments.">
-
-<meta name="keywords"
-content="Luxury Real Estate, Smart Homes, Premium Residences, Property Investment">
-
-<meta name="theme-color" content="#070B14">
-
-<link rel="stylesheet" href="style.css">
+content="Premium Islamic Digital Platform">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-rel="stylesheet">
+<style>
+:root{
+--primary:#0F9D58;
+--gold:#FFD700;
+--bg:#050505;
+--glass:rgba(255,255,255,.08);
+--text:#ffffff;
+}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:system-ui,sans-serif;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+}
+
+/* Animated Background */
+
+.bg{
+position:fixed;
+inset:0;
+z-index:-2;
+background:
+radial-gradient(circle at 20% 20%,#0F9D5820,transparent 40%),
+radial-gradient(circle at 80% 30%,#FFD70015,transparent 35%),
+radial-gradient(circle at 50% 80%,#0F9D5815,transparent 40%);
+animation:bgMove 12s infinite alternate;
+}
+
+@keyframes bgMove{
+from{transform:scale(1);}
+to{transform:scale(1.2);}
+}
+
+/* Grid Pattern */
+
+.pattern{
+position:fixed;
+inset:0;
+opacity:.07;
+background-image:
+linear-gradient(rgba(255,255,255,.15) 1px,transparent 1px),
+linear-gradient(90deg,rgba(255,255,255,.15) 1px,transparent 1px);
+background-size:50px 50px;
+z-index:-1;
+}
+
+/* Navbar */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 5%;
+backdrop-filter:blur(20px);
+background:var(--glass);
+border-bottom:1px solid rgba(255,255,255,.08);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+.logo{
+font-size:1.3rem;
+font-weight:700;
+color:var(--gold);
+}
+
+nav ul{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+color:white;
+}
+
+/* Hero */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+}
+
+.hero-content{
+max-width:900px;
+}
+
+.badge{
+display:inline-block;
+padding:10px 20px;
+border:1px solid rgba(255,255,255,.1);
+background:var(--glass);
+border-radius:50px;
+margin-bottom:25px;
+}
+
+h1{
+font-size:clamp(2.5rem,8vw,6rem);
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.gradient{
+background:linear-gradient(
+90deg,
+#0F9D58,
+#FFD700
+);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+font-size:1.1rem;
+opacity:.85;
+margin-bottom:35px;
+line-height:1.8;
+}
+
+.buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:15px 28px;
+border-radius:14px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.btn-primary{
+background:var(--primary);
+color:white;
+}
+
+.btn-primary:hover{
+transform:translateY(-4px);
+box-shadow:0 0 30px #0F9D58;
+}
+
+.btn-secondary{
+background:var(--glass);
+border:1px solid rgba(255,255,255,.1);
+color:white;
+}
+
+.btn-secondary:hover{
+border-color:var(--gold);
+}
+
+/* Feature Cards */
+
+.features{
+padding:100px 5%;
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:var(--glass);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.08);
+padding:30px;
+border-radius:24px;
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 30px #0F9D5840;
+}
+
+.card h3{
+margin-bottom:12px;
+color:var(--gold);
+}
+
+footer{
+padding:40px;
+text-align:center;
+opacity:.7;
+}
+</style>
 </head>
 
 <body>
 
-<div id="cursor"></div>
-<div id="cursor-blur"></div>
-
-<div class="progress-bar"></div>
-
-<div class="grid-bg"></div>
-
-<!-- ========================= -->
-<!-- NAVBAR -->
-<!-- ========================= -->
-
-<header class="navbar">
-
-<div class="logo">
-ROKIBUL PRIME LIVING
-</div>
+<div class="bg"></div>
+<div class="pattern"></div>
 
 <nav>
-
-<ul class="nav-links">
-
-<li><a href="#home">Home</a></li>
-
-<li><a href="#about">About</a></li>
-
-<li><a href="#properties">Properties</a></li>
-
-<li><a href="#investment">Investment</a></li>
-
-<li><a href="#contact">Contact</a></li>
-
-</ul>
-
-</nav>
-
-<div class="nav-actions">
-
-<button class="theme-toggle">
-🌙
-</button>
-
-<button class="glass-btn">
-Consultation
-</button>
-
+<div class="logo">
+☪ ROKIBUL ISLAMIC HUB
 </div>
 
-</header>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Quran</a></li>
+<li><a href="#">Hadith</a></li>
+<li><a href="#">Prayer</a></li>
+<li><a href="#">AI Assistant</a></li>
+</ul>
+</nav>
 
-<!-- ========================= -->
-<!-- HERO -->
-<!-- ========================= -->
-
-<section class="hero" id="home">
-
-<video autoplay muted loop playsinline class="hero-video">
-
-<source src="assets/videos/luxury.mp4" type="video/mp4">
-
-</video>
-
-<div class="hero-overlay"></div>
+<section class="hero">
 
 <div class="hero-content">
 
-<span class="hero-badge">
-Luxury Real Estate Operating System
-</span>
+<div class="badge">
+Premium Islamic Digital Platform
+</div>
 
 <h1>
-
-Experience The Future
+Welcome To
 <br>
-Of Luxury Living
-
+<span class="gradient">
+ROKIBUL ISLAMIC HUB
+</span>
 </h1>
 
 <p>
-
-Discover premium residences,
-smart homes and elite investment opportunities
-crafted for tomorrow.
-
+A futuristic Islamic ecosystem featuring
+Quran Center, Hadith Library,
+Prayer Tracking, Islamic Learning,
+Zakat Tools and AI Islamic Assistant.
 </p>
 
-<div class="hero-buttons">
+<div class="buttons">
 
-<button class="primary-btn">
-Explore Properties
-</button>
+<a href="#" class="btn btn-primary">
+Explore Quran
+</a>
 
-<button class="secondary-btn">
-Schedule Consultation
-</button>
+<a href="#" class="btn btn-secondary">
+Prayer Times
+</a>
 
-</div>
-
-</div>
-
-<div class="hero-stats">
-
-<div class="glass-card">
-
-<h3>500+</h3>
-
-<p>Luxury Residences</p>
+<a href="#" class="btn btn-secondary">
+AI Assistant
+</a>
 
 </div>
 
-<div class="glass-card">
-
-<h3>$2B+</h3>
-
-<p>Property Value</p>
-
-</div>
-
-<div class="glass-card">
-
-<h3>98%</h3>
-
-<p>Client Satisfaction</p>
-
-</div>
-
-</div>
-
-<div class="scroll-indicator">
-SCROLL
 </div>
 
 </section>
 
-<!-- ========================= -->
-<!-- ABOUT -->
-<!-- ========================= -->
+<section class="features">
 
-<section class="about" id="about">
-
-<div class="section-header">
-
-<span>ABOUT US</span>
-
-<h2>
-Redefining Luxury Real Estate
-</h2>
-
-</div>
-
-<div class="about-grid">
-
-<div class="glass-panel">
-
-<h3>Our Vision</h3>
-
+<div class="card">
+<h3>Prayer Center</h3>
 <p>
-
-To build future-ready living environments
-that combine architecture, technology,
-luxury and sustainability.
-
+Prayer times, Qibla direction,
+tracker and streak system.
 </p>
-
 </div>
 
-<div class="glass-panel">
-
-<h3>Our Mission</h3>
-
+<div class="card">
+<h3>Quran Center</h3>
 <p>
-
-Deliver premium property experiences
-through innovation, design excellence
-and intelligent investment opportunities.
-
+Arabic Quran, Bengali translation,
+search and bookmarks.
 </p>
-
 </div>
 
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- LIVE STATISTICS -->
-<!-- ========================= -->
-
-<section class="stats">
-
-<div class="stat-card">
-
-<h2 class="counter" data-target="500">
-0
-</h2>
-
-<p>Luxury Homes</p>
-
-</div>
-
-<div class="stat-card">
-
-<h2 class="counter" data-target="1200">
-0
-</h2>
-
-<p>Investors</p>
-
-</div>
-
-<div class="stat-card">
-
-<h2 class="counter" data-target="50">
-0
-</h2>
-
-<p>Smart Projects</p>
-
-</div>
-
-<div class="stat-card">
-
-<h2 class="counter" data-target="25">
-0
-</h2>
-
-<p>Global Partners</p>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- FEATURED PROPERTIES -->
-<!-- ========================= -->
-
-<section id="properties" class="properties">
-
-<div class="section-header">
-
-<span>FEATURED</span>
-
-<h2>Prime Luxury Properties</h2>
-
-</div>
-
-<div class="property-grid">
-
-<article class="property-card">
-
-<img
-src="assets/images/property1.jpg"
-alt="Property">
-
-<div class="property-info">
-
-<h3>Skyline Elite Residence</h3>
-
-<p>Dubai Marina</p>
-
-<div class="property-meta">
-
-<span>4 Beds</span>
-
-<span>4200 sqft</span>
-
-</div>
-
-<h4>$4.8M</h4>
-
-<button>
-View Details
-</button>
-
-</div>
-
-</article>
-
-<article class="property-card">
-
-<img
-src="assets/images/property2.jpg"
-alt="Property">
-
-<div class="property-info">
-
-<h3>Ocean View Penthouse</h3>
-
-<p>Singapore</p>
-
-<div class="property-meta">
-
-<span>5 Beds</span>
-
-<span>5600 sqft</span>
-
-</div>
-
-<h4>$8.2M</h4>
-
-<button>
-View Details
-</button>
-
-</div>
-
-</article>
-
-<article class="property-card">
-
-<img
-src="assets/images/property3.jpg"
-alt="Property">
-
-<div class="property-info">
-
-<h3>Future Smart Villa</h3>
-
-<p>California</p>
-
-<div class="property-meta">
-
-<span>6 Beds</span>
-
-<span>7300 sqft</span>
-
-</div>
-
-<h4>$12M</h4>
-
-<button>
-View Details
-</button>
-
-</div>
-
-</article>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- SMART SEARCH -->
-<!-- ========================= -->
-
-<section class="search-section">
-
-<div class="glass-search">
-
-<h2>Smart Property Search</h2>
-
-<form id="propertySearch">
-
-<input
-type="text"
-placeholder="Location">
-
-<select>
-
-<option>
-Property Type
-</option>
-
-<option>
-Villa
-</option>
-
-<option>
-Apartment
-</option>
-
-<option>
-Penthouse
-</option>
-
-</select>
-
-<select>
-
-<option>
-Budget
-</option>
-
-<option>
-$500K+
-</option>
-
-<option>
-$1M+
-</option>
-
-<option>
-$5M+
-</option>
-
-</select>
-
-<button type="submit">
-
-Search Property
-
-</button>
-
-</form>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- INVESTMENT -->
-<!-- ========================= -->
-
-<section class="investment" id="investment">
-
-<div class="investment-content">
-
-<span>INVESTMENT BENEFITS</span>
-
-<h2>
-Luxury Assets For Future Wealth
-</h2>
-
+<div class="card">
+<h3>Hadith Library</h3>
 <p>
-
-Access premium opportunities with
-high appreciation potential and
-long-term growth.
-
+Bukhari, Muslim and other
+major collections.
 </p>
+</div>
 
-<button class="primary-btn">
-
-Explore Opportunities
-
-</button>
-
+<div class="card">
+<h3>Islamic AI</h3>
+<p>
+Reference based answers with
+source citations.
+</p>
 </div>
 
 </section>
-
-<!-- ========================= -->
-<!-- TESTIMONIALS -->
-<!-- ========================= -->
-
-<section class="testimonials">
-
-<div class="section-header">
-
-<span>CLIENT STORIES</span>
-
-<h2>What Investors Say</h2>
-
-</div>
-
-<div class="testimonial-grid">
-
-<div class="testimonial-card">
-
-<p>
-
-Outstanding service and premium properties.
-
-</p>
-
-<h4>
-Michael Carter
-</h4>
-
-</div>
-
-<div class="testimonial-card">
-
-<p>
-
-The smartest investment decision I've made.
-
-</p>
-
-<h4>
-David Morgan
-</h4>
-
-</div>
-
-<div class="testimonial-card">
-
-<p>
-
-Exceptional luxury experience from start to finish.
-
-</p>
-
-<h4>
-Sophia Williams
-</h4>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- CONTACT -->
-<!-- ========================= -->
-
-<section id="contact" class="contact">
-
-<div class="contact-container">
-
-<div class="contact-left">
-
-<h2>
-
-Schedule A Private Consultation
-
-</h2>
-
-<p>
-
-Talk with our luxury property specialists.
-
-</p>
-
-</div>
-
-<form class="contact-form">
-
-<input
-type="text"
-placeholder="Full Name"
-required>
-
-<input
-type="email"
-placeholder="Email Address"
-required>
-
-<input
-type="tel"
-placeholder="Phone Number">
-
-<textarea
-placeholder="Message"></textarea>
-
-<button type="submit">
-
-Send Message
-
-</button>
-
-</form>
-
-</div>
-
-</section>
-
-<!-- ========================= -->
-<!-- FOOTER -->
-<!-- ========================= -->
 
 <footer>
-
-<div class="footer-logo">
-
-ROKIBUL PRIME LIVING
-
-</div>
-
-<p>
-
-The Future Of Luxury Living
-
-</p>
-
-<div class="footer-links">
-
-<a href="#">
-Privacy
-</a>
-
-<a href="#">
-Terms
-</a>
-
-<a href="#">
-Support
-</a>
-
-</div>
-
-<p>
-
-© 2026 ROKIBUL PRIME LIVING.
-All Rights Reserved.
-
-</p>
-
+© 2026 ROKIBUL ISLAMIC HUB
 </footer>
-
-<!-- FLOATING BUTTONS -->
-
-<div class="floating-buttons">
-
-<button class="call-btn">
-📞
-</button>
-
-<button class="chat-btn">
-💬
-</button>
-
-</div>
-
-<script src="script.js"></script>
 
 </body>
 </html>
