@@ -1,183 +1,54 @@
-// ======================
-// Loader
-// ======================
-
-window.addEventListener("load", () => {
-  const loader = document.getElementById("loader");
-
-  if (loader) {
-    loader.style.opacity = "0";
-
-    setTimeout(() => {
-      loader.style.display = "none";
-    }, 500);
-  }
+const cursor = document.querySelector(".cursor");
+document.addEventListener("mousemove",(e)=>{
+cursor.style.left = e.clientX + "px";
+cursor.style.top = e.clientY + "px";
 });
 
-// ======================
-// Typing Animation
-// ======================
+const boot = document.getElementById("boot");
+const app = document.getElementById("app");
 
-const typingElement = document.querySelector(".typing");
+setTimeout(()=>{
+boot.style.opacity="0";
+setTimeout(()=>{
+boot.classList.add("hidden");
+app.classList.remove("hidden");
+typeText();
+countUp();
+},1000);
+},3000);
 
-if (typingElement) {
-
-  const words = [
-    "Electronics Learner",
-    "Technology Enthusiast",
-    "GitHub Explorer",
-    "Future Technician"
-  ];
-
-  let wordIndex = 0;
-  let charIndex = 0;
-  let deleting = false;
-
-  function typeEffect() {
-
-    const currentWord = words[wordIndex];
-
-    if (!deleting) {
-
-      typingElement.textContent =
-        currentWord.substring(0, charIndex + 1);
-
-      charIndex++;
-
-      if (charIndex === currentWord.length) {
-
-        deleting = true;
-
-        setTimeout(typeEffect, 1500);
-
-        return;
-      }
-
-    } else {
-
-      typingElement.textContent =
-        currentWord.substring(0, charIndex - 1);
-
-      charIndex--;
-
-      if (charIndex === 0) {
-
-        deleting = false;
-
-        wordIndex++;
-
-        if (wordIndex >= words.length) {
-          wordIndex = 0;
-        }
-      }
-    }
-
-    setTimeout(typeEffect, deleting ? 60 : 120);
-  }
-
-  typeEffect();
+const text = "A cinematic AI operating system for the next generation web.";
+let i = 0;
+function typeText(){
+const el = document.getElementById("typeText");
+let interval = setInterval(()=>{
+el.textContent += text[i];
+i++;
+if(i>=text.length) clearInterval(interval);
+},40);
 }
 
-// ======================
-// Scroll Reveal Animation
-// ======================
-
-const revealElements = document.querySelectorAll(
-  ".section, .skill-card, .service-card, .project-card"
-);
-
-revealElements.forEach((element) => {
-  element.style.opacity = "0";
-  element.style.transform = "translateY(40px)";
-  element.style.transition =
-    "all 0.8s ease";
+function countUp(){
+document.querySelectorAll(".count").forEach(el=>{
+let target = +el.getAttribute("data-target");
+let count = 0;
+let step = target/100;
+let int = setInterval(()=>{
+count += step;
+el.textContent = Math.floor(count);
+if(count>=target) el.textContent = target;
+if(count>=target) clearInterval(int);
+},20);
 });
-
-function revealOnScroll() {
-
-  revealElements.forEach((element) => {
-
-    const windowHeight =
-      window.innerHeight;
-
-    const elementTop =
-      element.getBoundingClientRect().top;
-
-    if (elementTop < windowHeight - 100) {
-
-      element.style.opacity = "1";
-      element.style.transform =
-        "translateY(0)";
-    }
-  });
 }
 
-window.addEventListener(
-  "scroll",
-  revealOnScroll
-);
-
-revealOnScroll();
-
-// ======================
-// Mobile Menu
-// ======================
-
-const menuBtn =
-  document.querySelector(".menu-btn");
-
-const navLinks =
-  document.querySelector(".nav-links");
-
-if (menuBtn && navLinks) {
-
-  menuBtn.addEventListener(
-    "click",
-    () => {
-      navLinks.classList.toggle("active");
-    }
-  );
-}
-
-// ======================
-// Smooth Navbar Close
-// ======================
-
-document
-  .querySelectorAll(".nav-links a")
-  .forEach(link => {
-
-    link.addEventListener(
-      "click",
-      () => {
-
-        if (navLinks) {
-          navLinks.classList.remove("active");
-        }
-      }
-    );
-  });
-
-// ======================
-// Contact Form Demo
-// ======================
-
-const contactForm =
-  document.querySelector(".contact-form");
-
-if (contactForm) {
-
-  contactForm.addEventListener(
-    "submit",
-    function (e) {
-
-      e.preventDefault();
-
-      alert(
-        "Thank you! Your message has been received."
-      );
-
-      contactForm.reset();
-    }
-  );
-}
+document.querySelectorAll(".magnetic").forEach(btn=>{
+btn.addEventListener("mousemove",(e)=>{
+let x = e.offsetX;
+let y = e.offsetY;
+btn.style.transform = `translate(${x/10}px,${y/10}px)`;
+});
+btn.addEventListener("mouseleave",()=>{
+btn.style.transform="translate(0,0)";
+});
+});
